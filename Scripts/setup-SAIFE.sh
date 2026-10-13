@@ -16,24 +16,18 @@
 #BASE64=$(echo -n "elastic:${ELASTICSEARCH_PASSWORD}" | base64)
 #KIBANA_URL_WITHOUT_PROTOCOL=$(echo $KIBANA_URL | sed -e 's#http[s]\?://##g')
 
-# Add sdg user with superuser role
-#curl -X POST "http://localhost:30920/_security/user/sdg" -H "Content-Type: application/json" -u "elastic:${ELASTICSEARCH_PASSWORD}" -d '{
-#  "password" : "changeme",
-#  "roles" : [ "superuser" ],
-#  "full_name" : "SDG User",
-#  "email" : "sdg@elastic-pahlsoft.com"
-#}'
+bash /root/SDGpy/Scripts/setup-sdguser.sh
 
 
 # Install LLM Connector
-#bash /opt/workshops/elastic-llm.sh -m anthropic -k false -d true -n anthropic-connector
+bash /opt/workshops/elastic-llm.sh -k false -m claude-sonnet-4 -d true
 
 #echo
 #echo "Anthropic Connector configured as gpt5-connector"
 #echo
 
-python3 -m venv .venv
-source .venv/bin/activate
+# python3 -m venv .venv
+# source .venv/bin/activate
 pip install pandas numpy elasticsearch faker pyarrow
 
 # Use Security view
@@ -115,7 +109,7 @@ curl -X PUT "http://localhost:30920/_ingest/pipeline/logs-network_traffic-cleanu
 curl -X PUT "http://localhost:30920/_ingest/pipeline/nginx-cleanup" -H "Content-Type: application/x-ndjson" -u "sdg:changeme" -d @/root/SDGpy/Ingest-Pipelines/nginx-cleanup.json
 curl -X PUT "http://localhost:30920/_ingest/pipeline/timestamp-cleanup" -H "Content-Type: application/x-ndjson" -u "sdg:changeme" -d @/root/SDGpy/Ingest-Pipelines/timestamp-cleanup.json
 curl -X PUT "http://localhost:30920/_ingest/pipeline/logs-proxysg.log" -H "Content-Type: application/x-ndjson" -u "sdg:changeme" -d @/root/SDGpy/Ingest-Pipelines/logs-proxysg.log.json
-curl -X PUT "http://localhost:30920/_ingest/pipeline/logs-proxysg_json" -H "Content-Type: application/x-ndjson" -u "sdg:changeme" -d @/root/SDGpy/Ingest-Pipelines/logs-proxysg.log.router.json
+curl -X PUT "http://localhost:30920/_ingest/pipeline/logs-proxysg.log.routerjson" -H "Content-Type: application/x-ndjson" -u "sdg:changeme" -d @/root/SDGpy/Ingest-Pipelines/logs-proxysg.log.router.json
 
 echo
 echo "Custom Ingest Pipelines loaded"
