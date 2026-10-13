@@ -115,6 +115,7 @@ curl -X PUT "http://localhost:30920/_ingest/pipeline/logs-network_traffic-cleanu
 curl -X PUT "http://localhost:30920/_ingest/pipeline/nginx-cleanup" -H "Content-Type: application/x-ndjson" -u "sdg:changeme" -d @/root/SDGpy/Ingest-Pipelines/nginx-cleanup.json
 curl -X PUT "http://localhost:30920/_ingest/pipeline/timestamp-cleanup" -H "Content-Type: application/x-ndjson" -u "sdg:changeme" -d @/root/SDGpy/Ingest-Pipelines/timestamp-cleanup.json
 curl -X PUT "http://localhost:30920/_ingest/pipeline/logs-proxysg.log" -H "Content-Type: application/x-ndjson" -u "sdg:changeme" -d @/root/SDGpy/Ingest-Pipelines/logs-proxysg.log.json
+curl -X PUT "http://localhost:30920/_ingest/pipeline/logs-proxysg_json" -H "Content-Type: application/x-ndjson" -u "sdg:changeme" -d @/root/SDGpy/Ingest-Pipelines/logs-proxysg.log.router.json
 
 echo
 echo "Custom Ingest Pipelines loaded"
