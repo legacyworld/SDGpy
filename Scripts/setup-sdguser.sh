@@ -1,24 +1,12 @@
+#!/bin/bash
+
 SCRIPTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 ####################################################################### ENV
 
-ENV_FILE=/home/kubernetes-vm/env
-
-if [ ! -f "$ENV_FILE" ]; then
-    echo "ERROR: Environment file not found: $ENV_FILE"
-    exit 1
-fi
-
 set -a
 . /home/kubernetes-vm/env
 set +a
-
-if [ -z "$ELASTICSEARCH_PASSWORD" ]; then
-    echo "ERROR: ELASTICSEARCH_PASSWORD not found in $ENV_FILE"
-    exit 1
-fi
-
-ELASTICSEARCH_URL="https://es.elastic.lab"
 
 ####################################################################### CREATE USER
 
