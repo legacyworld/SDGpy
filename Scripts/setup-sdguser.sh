@@ -10,7 +10,7 @@ if [ ! -f "$ENV_FILE" ]; then
 fi
 
 set -a
-source "$ENV_FILE"
+. /home/kubernetes-vm/env
 set +a
 
 if [ -z "$ELASTICSEARCH_PASSWORD" ]; then
@@ -18,7 +18,7 @@ if [ -z "$ELASTICSEARCH_PASSWORD" ]; then
     exit 1
 fi
 
-ELASTICSEARCH_URL="${ELASTICSEARCH_URL:-http://localhost:30920}"
+ELASTICSEARCH_URL="https://es.elastic.lab"
 
 ####################################################################### CREATE USER
 

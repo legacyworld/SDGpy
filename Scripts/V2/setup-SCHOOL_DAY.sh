@@ -93,7 +93,7 @@ echo
 curl -u "sdg:changeme" -X PUT https://kb.elastic.lab:443/api/fleet/settings -H "kbn-xsrf: true" -H "Content-Type: application/json" -d '{"prerelease_integrations_enabled": true}'
 
 # Load pre-built Elastic Security rules (not required for this lab)
-#curl -X PUT "http://localhost:30001/api/detection_engine/rules/prepackaged" -u "sdg:changme"  --header "kbn-xsrf: true" -H "Content-Type: application/json"  -d '{}'
+#curl -X PUT "https://kb.elastic.lab/api/detection_engine/rules/prepackaged" -u "sdg:changme"  --header "kbn-xsrf: true" -H "Content-Type: application/json"  -d '{}'
 
 clear
 
