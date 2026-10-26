@@ -1,6 +1,6 @@
-elasticsearchScheme: http
-elasticsearchHost: localhost
-elasticsearchPort: 30920
+elasticsearchScheme: https
+elasticsearchHost: es.elastic.lab
+elasticsearchPort: 443
 elasticsearchUser: sdg
 elasticsearchPassword: changeme
 workloads:
