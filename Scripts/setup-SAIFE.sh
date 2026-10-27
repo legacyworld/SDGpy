@@ -20,7 +20,7 @@ bash /opt/workshops/elastic-llm.sh -k false -m claude-sonnet-4 -d true
 
 # python3 -m venv .venv
 # source .venv/bin/activate
-pip install pandas numpy elasticsearch faker pyarrow
+# pip install pandas numpy elasticsearch faker pyarrow
 
 # Use Security view
 bash /opt/workshops/elastic-view.sh -v security
